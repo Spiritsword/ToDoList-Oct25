@@ -58,24 +58,20 @@ function showTasks(taskListArray, id) {
 //"taskDeleteNode" is the delete button
 //"taskTextNode" is the task description
 //"taskNode" is the full task row
-
 //Node generation
         const taskNode = document.createElement("div");
         const taskTitleNode = document.createElement("div");
         var taskEditNode = document.createElement("button");
         const taskDeleteNode = document.createElement("button");
-
 //Node styling
         taskNode.className = "row pb-3";
         taskTitleNode.className = "col-2 tasktitle bg-primary";
         taskDeleteNode.className = "col-2 taskdelete bg-danger";
         taskTitleNode.style.textAlign = "center";
-
 //Node content
         taskTitleNode.textContent = `Task ${task.ID+1}`;
         taskDeleteNode.textContent = "Delete";
-
-//Delete functionality
+//Task deletion functionality added to delete button
         taskDeleteNode.id = task.ID;
         taskDeleteNode.addEventListener(
             "click",
@@ -88,7 +84,6 @@ function showTasks(taskListArray, id) {
         )
 //Labelling the edit node with the task id, so that the id can be accessed when the edit event listener is triggered.
         taskEditNode.id = task.ID;
-        
 //If task has been clicked for editing, replace the edit button with a save button, and requisite functionality
         if (taskEditNode.id == id) {
             taskEditNode.className = "col-2 taskedit bg-warning";
@@ -100,14 +95,13 @@ function showTasks(taskListArray, id) {
                 "click",
                 function(e) {
                     e.preventDefault();
-//When the save button is triggered, the edited text becomes the fixed task description.
+//When the save button is clicked, the edited text becomes the fixed task description.
                     task.text = taskTextNode.value;
-//Rebuilding the task list without any task being edited
+//Rebuilding the task list without any task being in edit mode
                     showTasks(taskListArray, -1);
                 }
             )
         }
-
 //If the task is not already being edited, then set up the edit button, with appropriate functionality
         else {
             taskEditNode.className = "col-2 taskedit bg-success";
@@ -124,7 +118,6 @@ function showTasks(taskListArray, id) {
                 }
             )
         }
-
 //Formatting the task description
         taskTextNode.className = "col-6 tasktext";
         taskTextNode.style.textWrap = "wrap";
