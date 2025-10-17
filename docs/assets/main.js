@@ -53,10 +53,10 @@ function showTasks(taskListArray, id) {
         const taskDeleteNode = document.createElement("button");
 
         taskNode.className = "row pb-3";
-        
         taskTitleNode.className = "col-2 tasktitle bg-primary";
-
         taskDeleteNode.className = "col-2 taskdelete bg-danger";
+        
+        taskTitleNode.style.textAlign = "center";
 
         taskTitleNode.textContent = `Task ${task.ID+1}`;
         taskDeleteNode.textContent = "Delete";
@@ -78,7 +78,6 @@ function showTasks(taskListArray, id) {
             taskEditNode.className = "col-2 taskedit bg-warning";
             taskEditNode.textContent = "Save";
             var taskTextNode = document.createElement("input");
-            taskTextNode.className = "col-6 tasktext";
             taskTextNode.defaultValue = task.text;                   
             taskEditNode.addEventListener(
                 "click",
@@ -95,7 +94,6 @@ function showTasks(taskListArray, id) {
             taskEditNode.className = "col-2 taskedit bg-success";
             taskEditNode.textContent = "Edit";
             var taskTextNode = document.createElement("div");
-            taskTextNode.className = "col-6 tasktext";
             taskTextNode.textContent = task.text;
             taskEditNode.addEventListener(
                 "click",
@@ -108,6 +106,8 @@ function showTasks(taskListArray, id) {
             )
         }
 
+        taskTextNode.className = "col-6 tasktext";
+        taskTextNode.style.textWrap = "wrap";
         taskNode.appendChild(taskTitleNode);
         taskNode.appendChild(taskTextNode);
         taskNode.appendChild(taskEditNode);
