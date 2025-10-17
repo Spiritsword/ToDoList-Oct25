@@ -119,7 +119,7 @@ function showTasks(taskListArray, id) {
             )
         }
 //Formatting the task description
-        taskTextNode.className = "col-6 tasktext";
+        taskTextNode.className = "col-6 tasktext border";
         taskTextNode.style.textWrap = "wrap";
 //Adding the task to the DOM       
         taskNode.appendChild(taskTitleNode);
