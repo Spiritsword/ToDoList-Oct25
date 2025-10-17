@@ -23,20 +23,18 @@
     <main>
         <section >
             <div class = "row p-3">
-                <div class = "col id=tasklistcol">
-                     <div class = "row">
-                        <div class = "col">
-                            <form id="new-task">
-                                <div class="mb-3">
-                                    <label for="new-task" class="form-label">New task:</label>
-                                    <input type="text" class="form-control" id="newtask" aria-label="task">
-                                </div>
-                                <div class="row justify-content-end">
-                                    <button type="submit" id="addbutton" class="btn btn-primary m-3">Submit</button>
-                                </div>
-                            </form>
+                <div class = "col" id=tasklistcol>
+                    <section id="currentTasks">                        
+                    </section>
+                    <form id="new-task">
+                        <div class="mb-3">
+                            <label for="new-task" class="form-label">New task:</label>
+                            <input type="text" class="form-control" id="newtask" name="newtask" aria-label="task">
                         </div>
-                     </div>
+                        <div class="row justify-content-end">
+                            <button type="submit" id="addbutton" class="btn btn-primary m-3">Submit</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>
