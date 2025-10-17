@@ -49,14 +49,13 @@ function showTasks(taskListArray, id) {
 
         const taskNode = document.createElement("div");
         const taskTitleNode = document.createElement("div");
-        var taskTextNode = document.createElement("div");
         var taskEditNode = document.createElement("button");
         const taskDeleteNode = document.createElement("button");
 
         taskNode.className = "row pb-3";
         
         taskTitleNode.className = "col-2 tasktitle bg-primary";
-        taskTextNode.className = "col-6 tasktext";
+
         taskDeleteNode.className = "col-2 taskdelete bg-danger";
 
         taskTitleNode.textContent = `Task ${task.ID+1}`;
@@ -78,8 +77,9 @@ function showTasks(taskListArray, id) {
         if (taskEditNode.id == id) {
             taskEditNode.className = "col-2 taskedit bg-warning";
             taskEditNode.textContent = "Save";
-            taskTextNode = document.createElement("input");
-            taskTextNode.textContent = task.text;                   
+            var taskTextNode = document.createElement("input");
+            taskTextNode.className = "col-6 tasktext";
+            taskTextNode.defaultValue = task.text;                   
             taskEditNode.addEventListener(
                 "click",
                 function(e) {
@@ -94,6 +94,8 @@ function showTasks(taskListArray, id) {
         else {
             taskEditNode.className = "col-2 taskedit bg-success";
             taskEditNode.textContent = "Edit";
+            var taskTextNode = document.createElement("div");
+            taskTextNode.className = "col-6 tasktext";
             taskTextNode.textContent = task.text;
             taskEditNode.addEventListener(
                 "click",
