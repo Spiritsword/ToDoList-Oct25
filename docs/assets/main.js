@@ -106,20 +106,13 @@ function showTasks(taskListArray, id) {
             )
         }
 
-
-}
-
-
-
-
-
         taskNode.appendChild(taskTitleNode);
         taskNode.appendChild(taskTextNode);
         taskNode.appendChild(taskEditNode);
         taskNode.appendChild(taskDeleteNode);
         console.log(taskNode);
         currentTasks.appendChild(taskNode);
-        newTaskInput.value = "";
+        newTaskInput.value = ""
     })
 }
 
