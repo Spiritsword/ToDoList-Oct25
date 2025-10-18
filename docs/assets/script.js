@@ -16,30 +16,35 @@ addButton.addEventListener("click", function(e) {
         ID:maxTaskID,
         text:newTaskInput.value
     }
+    tC = taskCheck(newTask.text, taskListArray);
+    if (tC) {
+        maxTaskID++;
+        newTask.ID = maxTaskID;
+        addTask(newTask)
+    }
+})
+
+function taskCheck(text, taskListArray){
 //Excluding empty tasks
-    if (newTask.text == ""){
+    if (text == ""){
         alert("Please write new task in the box.")
-        return
+        return false;
     }
 //Excluding duplicate tasks  
     duplicate = false;
-    taskListArray.forEach(function (task) {duplicate = (duplicate || newTaskInput.value==task.text)})
+    taskListArray.forEach(function (task) {duplicate = (duplicate || text==task.text)})
     if (duplicate){
         alert("Please write unique task");
-        return
+        return false;
     }
     else {
-        maxTaskID++;
-        newTask.ID = maxTaskID;
-        console.log("new task created: ", newTask);
-        addTask(newTask);
+        return true
     }
-});
+};
 
 //Helper function to add new task into task storage array, and display the task list on the page
 function addTask(newTask) {
     taskListArray.push(newTask);
-    console.log(taskListArray);
     showTasks(taskListArray, -1);
 }
 
@@ -95,10 +100,15 @@ function showTasks(taskListArray, id) {
                 "click",
                 function(e) {
                     e.preventDefault();
-//When the save button is clicked, the edited text becomes the fixed task description.
-                    task.text = taskTextNode.value;
+//When the save button is clicked, the edited text becomes the fixed task description                    
+                        if (task.text == taskTextNode.value){
+                        }
+                        else if (taskCheck(taskTextNode.value, taskListArray)){
+                            task.text = taskTextNode.value;
+                        }
+                        showTasks(taskListArray, -1)
+
 //Rebuilding the task list without any task being in edit mode
-                    showTasks(taskListArray, -1);
                 }
             )
         }
@@ -113,8 +123,7 @@ function showTasks(taskListArray, id) {
                 function(e) {
                     e.preventDefault();
 //If the edit event listener is triggered, then display the tasks, with the current task in edit mode
-                    showTasks(taskListArray, taskEditNode.id);
-                    reset()
+                    showTasks(taskListArray, taskEditNode.id)
                 }
             )
         }
